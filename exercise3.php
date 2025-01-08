@@ -6,5 +6,5 @@
  * Write a class named Employee that inherits from the Person class,
  * and adds the properties salary and position.
  * Override the constructor and call the parent constructor.
- * Override the afficheInfos() method to display the salary and position.
+ * Override the displayInfos() method to display the salary and position.
  */
