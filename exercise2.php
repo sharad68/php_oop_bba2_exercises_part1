@@ -91,4 +91,4 @@ $person1 = new Person("sharad", "bhusal", 21);
 $person2 = new Person("shrine", "sigdel", 20);
 
 echo $person1->displayInfos();
-echo $person1->displayInfos();
+echo $person2->displayInfos();
