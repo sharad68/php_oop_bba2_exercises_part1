@@ -6,55 +6,72 @@
  */
 
 $numbers = [10, 5, 8, 20, 3, 15];
-
-function getSum(array $numbers): float
+class Statistics
 {
-    $sum = 0;
-    foreach ($numbers as $number) {
-        $sum += $number;
-    }
-    return $sum;
-}
+    private $numbers;
 
-function getAverage(array $numbers): float
-{
-    if (count($numbers) === 0) {
-        return 0;
+    public function __construct(array $numbers)
+    {
+        $this->numbers = $numbers;
     }
-    return getSum($numbers) / count($numbers);
-}
 
-function getMin(array $numbers): float
-{
-    if (count($numbers) === 0) {
-        return 0;
-    }
-    $min = $numbers[0];
-    foreach ($numbers as $number) {
-        if ($number < $min) {
-            $min = $number;
+
+    public function getSum(): float
+    {
+        $sum = 0;
+        foreach ($this->numbers as $number) {
+            $sum += $number;
         }
+        return $sum;
     }
-    return $min;
-}
 
-function getMax(array $numbers): float
-{
-    if (count($numbers) === 0) {
-        return 0;
-    }
-    $max = $numbers[0];
-    foreach ($numbers as $number) {
-        if ($number > $max) {
-            $max = $number;
+    public function getAverage(): float
+    {
+        if (count($this->numbers) === 0) {
+            return 0;
         }
+        return $this->getSum() / count($this->numbers);
     }
-    return $max;
+
+    public function getMin(): float
+    {
+        if (count($this->numbers) === 0) {
+            return 0;
+        }
+        $min = $this->numbers[0];
+        foreach ($this->numbers as $number) {
+            if ($number < $min) {
+                $min = $number;
+            }
+        }
+        return $min;
+    }
+
+    public function getMax(): float
+    {
+        if (count($this->numbers) === 0) {
+            return 0;
+        }
+        $max = $this->numbers[0];
+        foreach ($this->numbers as $number) {
+            if ($number > $max) {
+                $max = $number;
+            }
+        }
+        return $max;
+    }
+
+    public function displayStatistics(): void
+    {
+
+        echo "All numbers : " . implode(", ", $this->numbers) . "<br>";
+        echo "Sum: " . $this->getSum() . "<br>";
+        echo "Average: " . $this->getAverage() . "<br>";
+        echo "Min: " . $this->getMin() . "<br>";
+        echo "Max: " . $this->getMax() . "<br>";
+    }
 }
 
-// 
-echo "All numbers : " . implode(", ", $numbers) . "<br>";
-echo "Sum: " . getSum($numbers) . "<br>";
-echo "Average: " . getAverage($numbers) . "<br>";
-echo "Min: " . getMin($numbers) . "<br>";
-echo "Max: " . getMax($numbers) . "<br>";
+
+$statistics1 = new Statistics($numbers);
+$statistics1->displayStatistics();

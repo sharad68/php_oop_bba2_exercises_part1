@@ -9,19 +9,17 @@
  * Override the displayInfos() method to display the salary and position.
  */
 require_once "exercise2.php";
-class Employee extends Person {
+class Employee extends Person
+{
     protected float $salary;
     protected string $position;
 
-    public function __construct(string $first_name,string $last_name,int $age,float $salary, string $position)
+    public function __construct(string $first_name, string $last_name, int $age, float $salary, string $position)
     {
+        parent::__construct($first_name, $last_name, $age);
+
         $this->setSalary($salary);
-        $this->setAge( $position);
-
-        parent::__construct( $first_name, $last_name, $age);
-        
-
-        
+        $this->setPosition($position);
     }
 
     /**
@@ -61,7 +59,10 @@ class Employee extends Person {
     }
     public function displayInfos()
     {
-        
-        return $parentInfo
+
+        return parent::displayInfos() . " Position:{$this->position}   Salary: {$this->salary}";
     }
 }
+
+$employee1 = new Employee("sharad", "Bhusal", 20, 2000000, "CEO");
+echo $employee1->displayInfos();
